@@ -6,7 +6,7 @@
 /*   By: lnguyen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 19:07:08 by lnguyen           #+#    #+#             */
-/*   Updated: 2018/09/04 22:31:13 by lnguyen          ###   ########.fr       */
+/*   Updated: 2018/09/04 21:42:32 by lnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ int do_op(char s1, t_operation *array, int *narray, int j)
 	{
 		if (ft_compare(s1,array[k].x) == 1)
 		{
-			if ((s1 == '/' || s1 == '%') && narray[j] == 0)
-				return (-1);
 			narray[j-1] = (*array[k].f)(narray[j-1],narray[j]);
 			narray[j] = 0;
 		}
