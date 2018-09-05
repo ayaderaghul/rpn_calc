@@ -6,7 +6,7 @@
 /*   By: lnguyen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 19:07:08 by lnguyen           #+#    #+#             */
-/*   Updated: 2018/09/04 22:31:13 by lnguyen          ###   ########.fr       */
+/*   Updated: 2018/09/05 10:02:21 by lnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,36 @@ int ft_compare(char c1, char c2)
     return 0;
 }
 
-int is_it_number(char c)
+int is_it_number_symbol(char c)
 {
     if ('0' <= c && c <= '9')
         return 1;
     return 0;
 }
 
-int is_it_operator(char c)
+int is_it_number(char *str)
+{
+	if (is_it_number_symbol(str[0]) == 1)
+		return 1;
+	if ((str[0] == '-' || str[0] == '+') && is_it_number_symbol(str[1]) == 1)
+		return 1;
+	return 0;
+}
+
+int is_it_operator_symbol(char c)
 {
     if (c == '+' || c == '-' || c == '*' || c == '/' || c == '%')
         return 1;
     return 0;
+}
+
+int is_it_operator(char *str)
+{
+	int l = 0;
+	l = length(str);
+	if (is_it_operator_symbol(str[0]) == 1 && (str[1] == ' ' || l == 1))
+		return 1;
+	return 0;
 }
 
 int numbers(char *str)
@@ -51,14 +69,14 @@ int numbers(char *str)
     i = 0;
     while (i < l)
     {
-        if (is_it_number(str[i]) == 1)
+        if (is_it_number(str+i) == 1)
             ++i;
         if (str[i] == ' ' || i == l)
 		{
             ++n;
 			++i;
 		}
-		if (is_it_operator(str[i]) == 1)
+		if (is_it_operator(str+i) == 1)
 		{
 			i = i + 2;
 		}
@@ -74,7 +92,7 @@ int operators(char *str)
     o = 0;
     while (str[i])
     {
-        if (is_it_operator(str[i]) == 1)
+        if (is_it_operator(str+i) == 1)
             ++o;
         ++i;
     }

@@ -6,7 +6,7 @@
 /*   By: lnguyen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 19:32:33 by lnguyen           #+#    #+#             */
-/*   Updated: 2018/09/04 22:34:16 by lnguyen          ###   ########.fr       */
+/*   Updated: 2018/09/05 09:59:09 by lnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int evaluate(char *str, t_operation *array)
 
     while (i < l)
     {
-        if (is_it_number(str[i]) == 1)
+        if (is_it_number(str+i) == 1)
             ++i;
         if (str[i] == ' ')
         {
@@ -55,7 +55,7 @@ int evaluate(char *str, t_operation *array)
             ++j;
             rest = str + i;
         }
-        if (is_it_operator(str[i]) == 1)
+        if (is_it_operator(str+i) == 1)
         {
 			j--;
 			j = do_op(str[i],array,narray,j);

@@ -16,7 +16,7 @@ int main()
 {
 	t_operation array[5];
 	init((t_operation*)array);
-	int narray[5] = {1,2,0,0,0};
+	int narray[5] = {-10,-1,0,0,0};
 	do_op('*',array,narray,1);
 	print_array(narray,5);
 	return 0;
